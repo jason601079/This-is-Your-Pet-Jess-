@@ -13,30 +13,35 @@ export default function MiniPlayer({
   artist = "J. Cole — The Fall Off",
 }: MiniPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const animFrameRef = useRef<number>();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [hasAudio, setHasAudio] = useState(false);
-  const animFrameRef = useRef<number>();
 
+  // Setup audio element (production-safe)
   useEffect(() => {
-    if (audioSrc) {
-      const audio = new Audio(audioSrc);
-      audio.loop = true;
-      audio.volume = 0.4;
-      audioRef.current = audio;
-      setHasAudio(true);
+    if (!audioSrc || !audioRef.current) return;
 
-      audio.addEventListener("canplay", () => setHasAudio(true));
-      audio.addEventListener("error", () => setHasAudio(false));
+    const audio = audioRef.current;
+    audio.loop = true;
+    audio.volume = 0.4;
 
-      return () => {
-        audio.pause();
-        audio.src = "";
-        if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-      };
-    }
+    const onCanPlay = () => setHasAudio(true);
+    const onError = () => setHasAudio(false);
+
+    audio.addEventListener("canplay", onCanPlay);
+    audio.addEventListener("error", onError);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("canplay", onCanPlay);
+      audio.removeEventListener("error", onError);
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    };
   }, [audioSrc]);
 
+  // Progress tracking
   const updateProgress = useCallback(() => {
     const audio = audioRef.current;
     if (audio && audio.duration) {
@@ -56,6 +61,7 @@ export default function MiniPlayer({
     };
   }, [isPlaying, updateProgress]);
 
+  // Play / Pause (user-initiated)
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -64,15 +70,25 @@ export default function MiniPlayer({
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+      audio
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
     }
   }, [isPlaying]);
 
   return (
     <div className="fixed top-4 left-4 z-30">
+      {/* Hidden but DOM-mounted audio element */}
+      <audio ref={audioRef} src={audioSrc} preload="metadata" />
+
       <div className="bg-card/70 backdrop-blur-md border border-border/40 rounded-2xl px-3 py-2.5 flex items-center gap-3 shadow-lg min-w-[200px]">
-        {/* Album art placeholder / music icon */}
-        <div className={`w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 ${isPlaying ? "animate-pulse-slow" : ""}`}>
+        {/* Icon */}
+        <div
+          className={`w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 ${
+            isPlaying ? "animate-pulse-slow" : ""
+          }`}
+        >
           <Music size={16} className="text-primary/70" />
         </div>
 
@@ -84,7 +100,7 @@ export default function MiniPlayer({
           <p className="text-muted-foreground/50 text-[10px] truncate leading-tight mt-0.5">
             {artist}
           </p>
-          {/* Progress bar */}
+
           {hasAudio && (
             <div className="w-full h-0.5 bg-muted/40 rounded-full mt-1.5 overflow-hidden">
               <div
@@ -95,7 +111,7 @@ export default function MiniPlayer({
           )}
         </div>
 
-        {/* Play/Pause button */}
+        {/* Play / Pause */}
         <button
           onClick={togglePlay}
           disabled={!hasAudio}
@@ -106,14 +122,17 @@ export default function MiniPlayer({
           }`}
           aria-label={isPlaying ? "Pause" : "Play"}
         >
-          {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+          {isPlaying ? (
+            <Pause size={14} />
+          ) : (
+            <Play size={14} className="ml-0.5" />
+          )}
         </button>
       </div>
 
-      {/* Hint if no audio */}
       {!hasAudio && (
         <p className="text-muted-foreground/25 text-[9px] mt-1.5 text-center font-handwritten">
-          add audio file to play
+          audio not found
         </p>
       )}
     </div>

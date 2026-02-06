@@ -86,7 +86,7 @@ const Index = () => {
       }}
     >
       <StarField />
-      <MiniPlayer audioSrc="public/only-you.mp3"/>
+      <MiniPlayer audioSrc="/only-you.mp3"/>
       <ActionPanel onShake={handleShake} onRub={handleRub} onTouch={handleTouch} />
 
       {/* Main cat area */}
