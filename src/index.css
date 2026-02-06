@@ -180,6 +180,27 @@
     animation: headTilt 3s ease-in-out;
   }
 
+  /* Carousel orbit spin */
+  .animate-carousel-orbit {
+    animation: carouselOrbit 8s linear infinite;
+  }
+
+  /* Card hover float */
+  .animate-card-hover {
+    animation: cardHover 3s ease-in-out infinite;
+  }
+
+  /* Idle tail sway */
+  .animate-tail-idle {
+    animation: tailIdle 5s ease-in-out infinite;
+    transform-origin: left center;
+  }
+
+  /* Whisker twitch */
+  .animate-whisker {
+    animation: whiskerTwitch 6s ease-in-out infinite;
+  }
+
   .perspective-1000 {
     perspective: 1000px;
   }
@@ -303,4 +324,29 @@
   0%, 80%, 100% { transform: rotate(0deg); }
   40% { transform: rotate(12deg); }
   60% { transform: rotate(8deg); }
+}
+
+@keyframes carouselOrbit {
+  0% { transform: translateX(-30px); opacity: 0.4; }
+  25% { transform: translateX(-15px) scale(1.1); opacity: 0.7; }
+  50% { transform: translateX(0px) scale(1.2); opacity: 1; }
+  75% { transform: translateX(15px) scale(1.1); opacity: 0.7; }
+  100% { transform: translateX(30px); opacity: 0.4; }
+}
+
+@keyframes cardHover {
+  0%, 100% { transform: translateY(0) rotateY(0); }
+  50% { transform: translateY(-4px) rotateY(2deg); }
+}
+
+@keyframes tailIdle {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(5deg); }
+  60% { transform: rotate(-3deg); }
+}
+
+@keyframes whiskerTwitch {
+  0%, 85%, 100% { transform: scaleX(1); }
+  90% { transform: scaleX(1.05); }
+  95% { transform: scaleX(0.97); }
 }

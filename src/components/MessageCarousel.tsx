@@ -2,7 +2,6 @@ import { useState, useRef, useCallback } from "react";
 import { getRandomMessage } from "@/lib/messages";
 
 interface MessageCarouselProps {
-  visible: boolean;
   onDiscover: () => void;
   discoveredCount: number;
 }
@@ -16,7 +15,7 @@ function generateCards() {
   }));
 }
 
-export default function MessageCarousel({ visible, onDiscover }: MessageCarouselProps) {
+export default function MessageCarousel({ onDiscover }: MessageCarouselProps) {
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   const [activeIndex, setActiveIndex] = useState(Math.floor(CARD_COUNT / 2));
   const cardsRef = useRef(generateCards());
@@ -38,24 +37,36 @@ export default function MessageCarousel({ visible, onDiscover }: MessageCarousel
     setActiveIndex(prev => wrapIndex(direction === "left" ? prev + 1 : prev - 1));
   }, []);
 
-  if (!visible) return null;
-
   const cards = cardsRef.current;
-
-  // Show 5 cards centered around activeIndex
   const visibleOffsets = [-2, -1, 0, 1, 2];
 
   return (
-    <div className="animate-slide-up">
+    <div className="animate-soft-fade-in">
+      {/* Spinning orbit dots */}
       <div className="flex items-center justify-center gap-1 mb-4">
-        {cards.map((_, i) => (
-          <div
-            key={i}
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
-              i === activeIndex ? "bg-primary/60 w-3" : "bg-muted-foreground/20"
-            }`}
-          />
-        ))}
+        <div className="relative w-20 h-5">
+          {cards.map((_, i) => {
+            const angle = (i / CARD_COUNT) * 360;
+            const isActive = i === activeIndex;
+            return (
+              <div
+                key={i}
+                className="absolute animate-carousel-orbit"
+                style={{
+                  left: '50%',
+                  top: '50%',
+                  animationDelay: `${-(i / CARD_COUNT) * 8}s`,
+                }}
+              >
+                <div
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                    isActive ? "bg-primary/70 w-3 scale-125" : "bg-muted-foreground/25"
+                  }`}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <div className="relative h-44 flex items-center justify-center">
@@ -91,7 +102,7 @@ export default function MessageCarousel({ visible, onDiscover }: MessageCarousel
               }}
             >
               <div
-                className="relative w-48 h-36 transition-transform duration-700 ease-out"
+                className={`relative w-48 h-36 transition-transform duration-700 ease-out ${isActive && !isFlipped ? "animate-card-hover" : ""}`}
                 style={{
                   transformStyle: "preserve-3d",
                   transform: isFlipped ? "rotateY(180deg)" : "rotateY(0)",
@@ -100,7 +111,7 @@ export default function MessageCarousel({ visible, onDiscover }: MessageCarousel
                 {/* Front */}
                 <div className="absolute inset-0 backface-hidden rounded-2xl bg-card border border-border/50 flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <span className="text-3xl">🐾</span>
+                    <span className="text-3xl animate-bob">🐾</span>
                     <p className="text-muted-foreground/40 text-xs mt-2 font-handwritten text-base">
                       tap to read
                     </p>
