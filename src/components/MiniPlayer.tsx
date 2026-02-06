@@ -16,10 +16,11 @@ export default function MiniPlayer({
   const animFrameRef = useRef<number>();
 
   const [isPlaying, setIsPlaying] = useState(false);
+  // Assume audio exists if audioSrc is provided
+  const [hasAudio, setHasAudio] = useState(!!audioSrc);
   const [progress, setProgress] = useState(0);
-  const [hasAudio, setHasAudio] = useState(false);
 
-  // Setup audio element (production-safe)
+  // Setup audio element (mobile + desktop safe)
   useEffect(() => {
     if (!audioSrc || !audioRef.current) return;
 
@@ -27,15 +28,15 @@ export default function MiniPlayer({
     audio.loop = true;
     audio.volume = 0.4;
 
-    const onCanPlay = () => setHasAudio(true);
-    const onError = () => setHasAudio(false);
+    const onError = () => {
+      setHasAudio(false);
+      setIsPlaying(false);
+    };
 
-    audio.addEventListener("canplay", onCanPlay);
     audio.addEventListener("error", onError);
 
     return () => {
       audio.pause();
-      audio.removeEventListener("canplay", onCanPlay);
       audio.removeEventListener("error", onError);
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
@@ -61,7 +62,7 @@ export default function MiniPlayer({
     };
   }, [isPlaying, updateProgress]);
 
-  // Play / Pause (user-initiated)
+  // Play / Pause toggle
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -79,11 +80,11 @@ export default function MiniPlayer({
 
   return (
     <div className="fixed top-4 left-4 z-30">
-      {/* Hidden but DOM-mounted audio element */}
-      <audio ref={audioRef} src={audioSrc} preload="metadata" />
+      {/* DOM-mounted audio element (mobile-safe) */}
+      <audio ref={audioRef} src={audioSrc} preload="none" playsInline />
 
       <div className="bg-card/70 backdrop-blur-md border border-border/40 rounded-2xl px-3 py-2.5 flex items-center gap-3 shadow-lg min-w-[200px]">
-        {/* Icon */}
+        {/* Music icon */}
         <div
           className={`w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 ${
             isPlaying ? "animate-pulse-slow" : ""
@@ -101,6 +102,7 @@ export default function MiniPlayer({
             {artist}
           </p>
 
+          {/* Progress bar */}
           {hasAudio && (
             <div className="w-full h-0.5 bg-muted/40 rounded-full mt-1.5 overflow-hidden">
               <div
@@ -111,7 +113,7 @@ export default function MiniPlayer({
           )}
         </div>
 
-        {/* Play / Pause */}
+        {/* Play / Pause button */}
         <button
           onClick={togglePlay}
           disabled={!hasAudio}
@@ -130,6 +132,7 @@ export default function MiniPlayer({
         </button>
       </div>
 
+      {/* Hint if audio really not found */}
       {!hasAudio && (
         <p className="text-muted-foreground/25 text-[9px] mt-1.5 text-center font-handwritten">
           audio not found
