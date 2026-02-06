@@ -1,10 +1,11 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import IntroScreen from "@/components/IntroScreen";
 import CatSetup from "@/components/CatSetup";
 import CatCompanion from "@/components/CatCompanion";
 import MessageCarousel from "@/components/MessageCarousel";
 import StarField from "@/components/StarField";
 import ActionPanel from "@/components/ActionPanel";
+import MiniPlayer from "@/components/MiniPlayer";
 import { useCatState } from "@/hooks/useCatState";
 import { useTimeOfDay } from "@/hooks/useTimeOfDay";
 import type { CatPersonality } from "@/hooks/useCatState";
@@ -85,6 +86,7 @@ const Index = () => {
       }}
     >
       <StarField />
+      <MiniPlayer />
       <ActionPanel onShake={handleShake} onRub={handleRub} onTouch={handleTouch} />
 
       {/* Main cat area */}
