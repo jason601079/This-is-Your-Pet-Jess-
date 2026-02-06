@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import IntroScreen from "@/components/IntroScreen";
 import CatSetup from "@/components/CatSetup";
 import CatCompanion from "@/components/CatCompanion";
@@ -14,9 +14,6 @@ type AppPhase = "intro" | "setup" | "main";
 const Index = () => {
   const timeOfDay = useTimeOfDay();
   const cat = useCatState(timeOfDay);
-  const [showCards, setShowCards] = useState(false);
-  const [cardTriggerCount, setCardTriggerCount] = useState(0);
-  const catRef = useRef<{ onShake: () => void; onRub: () => void; onTouch: () => void } | null>(null);
 
   const initialPhase: AppPhase = cat.hasBeenIntroduced ? "main" : "intro";
   const [phase, setPhase] = useState<AppPhase>(initialPhase);
@@ -40,13 +37,6 @@ const Index = () => {
     [cat]
   );
 
-  // Occasionally trigger cards after interactions
-  useEffect(() => {
-    if (cat.interactionCount > 0 && cat.interactionCount % 4 === 0) {
-      setShowCards(true);
-      setCardTriggerCount(prev => prev + 1);
-    }
-  }, [cat.interactionCount]);
 
   const handlePet = useCallback(() => {
     cat.interact();
@@ -112,36 +102,13 @@ const Index = () => {
         />
       </div>
 
-      {/* Message cards area */}
+      {/* Message cards area - always visible */}
       <div className="pb-8 px-4 z-10">
-        {showCards ? (
-          <MessageCarousel
-            visible={showCards}
-            onDiscover={cat.discoverCard}
-            discoveredCount={cat.cardsDiscovered}
-          />
-        ) : (
-          <div className="text-center">
-            <p className="text-muted-foreground/20 text-xs font-handwritten text-sm animate-soft-fade-in">
-              {cat.interactionCount === 0
-                ? "tap to say hello"
-                : cat.interactionCount < 4
-                ? "keep playing..."
-                : ""}
-            </p>
-          </div>
-        )}
+        <MessageCarousel
+          onDiscover={cat.discoverCard}
+          discoveredCount={cat.cardsDiscovered}
+        />
       </div>
-
-      {/* Hide cards button */}
-      {showCards && (
-        <button
-          onClick={() => setShowCards(false)}
-          className="fixed bottom-3 right-4 text-muted-foreground/20 text-xs hover:text-muted-foreground/40 transition-colors duration-500 z-20 font-handwritten"
-        >
-          hide cards
-        </button>
-      )}
     </div>
   );
 };

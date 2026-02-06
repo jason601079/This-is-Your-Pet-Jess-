@@ -51,13 +51,13 @@ export default function CatCompanion({
     }, 2500);
   }, []);
 
-  // Random wandering
+  // Random wandering - more frequent movement
   useEffect(() => {
     const wander = () => {
       const poses: CatPose[] = ["sitting", "lying", "stretching", "standing"];
       const newPose = poses[Math.floor(Math.random() * poses.length)];
-      const newX = -40 + Math.random() * 80;
-      const newY = -20 + Math.random() * 40;
+      const newX = -60 + Math.random() * 120;
+      const newY = -30 + Math.random() * 60;
       setPose(newPose);
       setPosition({ x: newX, y: newY });
 
@@ -66,10 +66,10 @@ export default function CatCompanion({
         setTimeout(() => setPose("sitting"), 2000);
       }
 
-      wanderTimerRef.current = setTimeout(wander, 8000 + Math.random() * 6000);
+      wanderTimerRef.current = setTimeout(wander, 5000 + Math.random() * 4000);
     };
 
-    wanderTimerRef.current = setTimeout(wander, 10000);
+    wanderTimerRef.current = setTimeout(wander, 4000);
     return () => {
       if (wanderTimerRef.current) clearTimeout(wanderTimerRef.current);
     };
@@ -227,8 +227,8 @@ export default function CatCompanion({
         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-card/80 border-r border-b border-border/50 rotate-45" />
       </div>
 
-      {/* Cat name */}
-      <p className="text-muted-foreground/40 text-xs mb-2 font-handwritten text-base tracking-wide">
+      {/* Cat name - bigger */}
+      <p className="text-muted-foreground/50 mb-3 font-handwritten text-2xl tracking-widest">
         {name}
       </p>
 

@@ -54,6 +54,7 @@ export default function CatSVG({ mood, timeOfDay, activeToy, pose = "sitting" }:
 function SleepingCat() {
   return (
     <>
+      {/* Curled tail */}
       <path
         d="M155,155 Q175,130 170,110 Q165,95 155,100 Q148,105 150,115"
         stroke="hsl(var(--cat-ginger))"
@@ -61,24 +62,48 @@ function SleepingCat() {
         fill="none"
         strokeLinecap="round"
       />
+      {/* Body curl */}
       <ellipse cx="110" cy="155" rx="58" ry="22" fill="hsl(var(--cat-ginger))" />
-      <ellipse cx="110" cy="158" rx="40" ry="12" fill="hsl(var(--cat-ginger-light))" opacity="0.4" />
-      <path d="M85,147 Q90,142 95,147" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.25" />
-      <path d="M105,145 Q110,140 115,145" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.25" />
-      <path d="M125,147 Q130,142 135,147" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.25" />
-      <circle cx="65" cy="145" r="24" fill="hsl(var(--cat-ginger))" />
-      <circle cx="55" cy="152" r="6" fill="hsl(var(--cat-ginger-light))" opacity="0.3" />
-      <polygon points="46,130 52,108 64,126" fill="hsl(var(--cat-ginger-dark))" />
-      <polygon points="72,124 82,108 88,130" fill="hsl(var(--cat-ginger-dark))" />
-      <polygon points="49,129 53,112 62,126" fill="hsl(var(--cat-nose))" opacity="0.15" />
-      <polygon points="74,125 82,112 86,129" fill="hsl(var(--cat-nose))" opacity="0.15" />
-      <path d="M53,143 Q58,139 63,143" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <path d="M69,141 Q74,137 79,141" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <path d="M66,149 L64,152 L68,152 Z" fill="hsl(var(--cat-nose))" />
-      <path d="M63,154 Q66,156 69,154" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" fill="none" />
+      <ellipse cx="110" cy="158" rx="40" ry="12" fill="hsl(var(--cat-ginger-light))" opacity="0.35" />
+      
+      {/* Subtle body stripes */}
+      <path d="M85,147 Q90,142 95,147" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.2" />
+      <path d="M105,145 Q110,140 115,145" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.2" />
+      <path d="M125,147 Q130,142 135,147" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.2" />
+      
+      {/* Head */}
+      <circle cx="65" cy="145" r="26" fill="hsl(var(--cat-ginger))" />
+      {/* Cheek highlight */}
+      <circle cx="53" cy="152" r="7" fill="hsl(var(--cat-ginger-light))" opacity="0.25" />
+      
+      {/* Ears */}
+      <polygon points="44,128 50,104 64,123" fill="hsl(var(--cat-ginger-dark))" />
+      <polygon points="74,122 84,104 90,128" fill="hsl(var(--cat-ginger-dark))" />
+      <polygon points="47,126 51,109 62,123" fill="hsl(var(--cat-nose))" opacity="0.12" />
+      <polygon points="76,122 84,109 88,127" fill="hsl(var(--cat-nose))" opacity="0.12" />
+      
+      {/* Closed eyes - cute curved lines */}
+      <path d="M52,142 Q58,137 64,142" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+      <path d="M68,140 Q74,135 80,140" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+      
+      {/* Little eyelashes */}
+      <line x1="53" y1="140" x2="51" y2="138" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1" opacity="0.4" />
+      <line x1="69" y1="138" x2="67" y2="136" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1" opacity="0.4" />
+      
+      {/* Nose */}
+      <ellipse cx="66" cy="149" rx="3" ry="2.5" fill="hsl(var(--cat-nose))" />
+      <circle cx="65" cy="148" r="0.8" fill="hsl(0 0% 100%)" opacity="0.3" />
+      
+      {/* Mouth */}
+      <path d="M63,152 Q66,155 69,152" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" fill="none" />
+      
+      {/* Tiny paw poking out */}
       <ellipse cx="52" cy="165" rx="10" ry="6" fill="hsl(var(--cat-ginger))" />
-      <path d="M45,165 L47,163" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.6" opacity="0.3" />
-      <path d="M48,165 L50,163" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.6" opacity="0.3" />
+      <circle cx="47" cy="166" r="2" fill="hsl(var(--cat-nose))" opacity="0.15" />
+      <circle cx="51" cy="167" r="2" fill="hsl(var(--cat-nose))" opacity="0.15" />
+      <circle cx="55" cy="166" r="2" fill="hsl(var(--cat-nose))" opacity="0.15" />
+      
+      {/* Z's */}
       <text x="95" y="120" fill="hsl(var(--muted-foreground))" fontSize="16" fontFamily="var(--font-handwritten)" opacity="0.35" className="animate-float">z</text>
       <text x="108" y="108" fill="hsl(var(--muted-foreground))" fontSize="13" fontFamily="var(--font-handwritten)" opacity="0.25" className="animate-float" style={{ animationDelay: "0.7s" }}>z</text>
       <text x="118" y="98" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-handwritten)" opacity="0.15" className="animate-float" style={{ animationDelay: "1.4s" }}>z</text>
@@ -99,143 +124,187 @@ interface SittingCatProps {
 function SittingCat({ mood, isPurring, isPlayful, isStartled, isJudgmental, isReaching, pose }: SittingCatProps) {
   return (
     <>
-      {/* Tail */}
+      {/* Tail - thicker with fluffy tip */}
       <path
         d={isPlayful
-          ? "M165,145 Q190,115 185,80 Q180,55 168,62"
-          : "M165,145 Q180,125 175,100 Q170,80 160,85"
+          ? "M160,150 Q185,115 180,78 Q176,55 165,62"
+          : "M160,150 Q178,120 172,95 Q166,75 155,82"
         }
         stroke="hsl(var(--cat-ginger))"
-        strokeWidth="9"
+        strokeWidth="10"
         fill="none"
         strokeLinecap="round"
-        className={isPlayful ? "animate-tail" : ""}
+        className={isPlayful ? "animate-tail" : "animate-tail-idle"}
         style={{ transition: "d 1s ease" }}
       />
+      {/* Tail fluff tip */}
+      <circle
+        cx={isPlayful ? "165" : "155"}
+        cy={isPlayful ? "62" : "82"}
+        r="7"
+        fill="hsl(var(--cat-ginger))"
+      />
+      {/* Tail stripe */}
       <path
-        d={isPlayful
-          ? "M175,105 Q180,95 178,85"
-          : "M170,115 Q175,105 173,95"
-        }
+        d={isPlayful ? "M175,100 Q178,90 176,80" : "M168,110 Q172,100 170,90"}
         stroke="hsl(var(--cat-ginger-dark))"
         strokeWidth="2"
         fill="none"
         strokeLinecap="round"
-        opacity="0.25"
+        opacity="0.2"
       />
 
-      {/* Body */}
-      <ellipse cx="110" cy="145" rx="44" ry="30" fill="hsl(var(--cat-ginger))" />
-      <ellipse cx="110" cy="130" rx="28" ry="22" fill="hsl(var(--cat-ginger-light))" opacity="0.45" />
-      <path d="M82,138 Q88,132 94,138" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.2" />
-      <path d="M100,134 Q106,128 112,134" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.2" />
-      <path d="M118,136 Q124,130 130,136" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.2" />
+      {/* Body - rounder, friendlier */}
+      <ellipse cx="110" cy="148" rx="46" ry="32" fill="hsl(var(--cat-ginger))" />
+      {/* Belly fluff */}
+      <ellipse cx="110" cy="155" rx="30" ry="18" fill="hsl(var(--cat-ginger-light))" opacity="0.35" />
+      {/* Body stripes */}
+      <path d="M82,140 Q88,134 94,140" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.4" fill="none" opacity="0.18" />
+      <path d="M100,136 Q106,130 112,136" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.4" fill="none" opacity="0.18" />
+      <path d="M118,138 Q124,132 130,138" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.4" fill="none" opacity="0.18" />
 
-      {/* Back legs */}
-      <ellipse cx="135" cy="168" rx="14" ry="8" fill="hsl(var(--cat-ginger))" />
-      <ellipse cx="85" cy="168" rx="14" ry="8" fill="hsl(var(--cat-ginger))" />
+      {/* Back legs - rounder */}
+      <ellipse cx="138" cy="170" rx="15" ry="9" fill="hsl(var(--cat-ginger))" />
+      <ellipse cx="82" cy="170" rx="15" ry="9" fill="hsl(var(--cat-ginger))" />
 
-      {/* Front paws */}
+      {/* Front paws - chunkier with toe beans */}
       <g className={isPurring ? "animate-knead" : ""}>
-        <ellipse cx="90" cy="172" rx="10" ry="7" fill="hsl(var(--cat-ginger))" />
-        <circle cx="86" cy="174" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.2" />
-        <circle cx="90" cy="175" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.2" />
-        <circle cx="94" cy="174" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.2" />
+        <ellipse cx="92" cy="174" rx="12" ry="8" fill="hsl(var(--cat-ginger))" />
+        <circle cx="87" cy="176" r="2" fill="hsl(var(--cat-nose))" opacity="0.18" />
+        <circle cx="92" cy="177" r="2" fill="hsl(var(--cat-nose))" opacity="0.18" />
+        <circle cx="97" cy="176" r="2" fill="hsl(var(--cat-nose))" opacity="0.18" />
+        <ellipse cx="92" cy="179" rx="4" ry="2.5" fill="hsl(var(--cat-nose))" opacity="0.12" />
       </g>
       <g className={isPurring ? "animate-knead" : ""} style={{ animationDelay: "0.3s" }}>
-        <ellipse cx="130" cy="172" rx="10" ry="7" fill="hsl(var(--cat-ginger))" />
-        <circle cx="126" cy="174" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.2" />
-        <circle cx="130" cy="175" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.2" />
-        <circle cx="134" cy="174" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.2" />
+        <ellipse cx="128" cy="174" rx="12" ry="8" fill="hsl(var(--cat-ginger))" />
+        <circle cx="123" cy="176" r="2" fill="hsl(var(--cat-nose))" opacity="0.18" />
+        <circle cx="128" cy="177" r="2" fill="hsl(var(--cat-nose))" opacity="0.18" />
+        <circle cx="133" cy="176" r="2" fill="hsl(var(--cat-nose))" opacity="0.18" />
+        <ellipse cx="128" cy="179" rx="4" ry="2.5" fill="hsl(var(--cat-nose))" opacity="0.12" />
       </g>
 
-      {/* Head */}
+      {/* Head - bigger and rounder */}
       <circle
         cx="110"
         cy="82"
-        r={isStartled ? 34 : 32}
+        r={isStartled ? 37 : 35}
         fill="hsl(var(--cat-ginger))"
         style={{ transition: "r 0.3s ease" }}
       />
-      <circle cx="82" cy="92" r="10" fill="hsl(var(--cat-ginger-light))" opacity="0.3" />
-      <circle cx="138" cy="92" r="10" fill="hsl(var(--cat-ginger-light))" opacity="0.3" />
+      {/* Head highlight */}
+      <circle cx="100" cy="72" r="14" fill="hsl(var(--cat-ginger-light))" opacity="0.2" />
+      
+      {/* Cheeks - fuller, more kawaii */}
+      <circle cx="80" cy="92" r="13" fill="hsl(var(--cat-ginger-light))" opacity="0.25" />
+      <circle cx="140" cy="92" r="13" fill="hsl(var(--cat-ginger-light))" opacity="0.25" />
 
-      {/* Ears */}
+      {/* Ears - larger and more expressive */}
       <g className={isStartled ? "" : "animate-ear-twitch"}>
         <polygon
-          points={isStartled ? "80,60 86,26 100,54" : "82,62 88,32 102,56"}
+          points={isStartled ? "78,58 84,20 102,52" : "80,60 86,26 104,54"}
           fill="hsl(var(--cat-ginger-dark))"
         />
         <polygon
-          points={isStartled ? "84,58 87,32 98,54" : "86,60 89,36 100,56"}
+          points={isStartled ? "82,56 85,28 100,52" : "84,58 87,32 102,54"}
           fill="hsl(var(--cat-nose))"
-          opacity="0.18"
+          opacity="0.15"
+        />
+        {/* Ear tuft */}
+        <line
+          x1={isStartled ? "88" : "90"}
+          y1={isStartled ? "42" : "46"}
+          x2={isStartled ? "92" : "94"}
+          y2={isStartled ? "36" : "40"}
+          stroke="hsl(var(--cat-ginger-light))"
+          strokeWidth="2"
+          opacity="0.4"
+          strokeLinecap="round"
         />
       </g>
       <g>
         <polygon
-          points={isStartled ? "120,54 134,26 140,60" : "118,56 132,32 138,62"}
+          points={isStartled ? "118,52 136,20 142,58" : "116,54 132,26 140,60"}
           fill="hsl(var(--cat-ginger-dark))"
         />
         <polygon
-          points={isStartled ? "122,54 134,32 138,58" : "120,56 132,36 136,60"}
+          points={isStartled ? "120,52 136,28 140,56" : "118,54 132,32 138,58"}
           fill="hsl(var(--cat-nose))"
-          opacity="0.18"
+          opacity="0.15"
+        />
+        {/* Ear tuft */}
+        <line
+          x1={isStartled ? "130" : "128"}
+          y1={isStartled ? "42" : "46"}
+          x2={isStartled ? "134" : "132"}
+          y2={isStartled ? "36" : "40"}
+          stroke="hsl(var(--cat-ginger-light))"
+          strokeWidth="2"
+          opacity="0.4"
+          strokeLinecap="round"
         />
       </g>
 
-      {/* Forehead stripes */}
-      <path d="M100,62 Q103,56 106,62" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.35" />
-      <path d="M106,62 Q109,55 112,62" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.35" />
-      <path d="M112,62 Q115,56 118,62" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" opacity="0.35" />
+      {/* Forehead M mark - classic tabby */}
+      <path d="M98,60 Q103,52 108,60" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.5" fill="none" opacity="0.3" />
+      <path d="M102,60 Q107,50 112,60" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.5" fill="none" opacity="0.3" />
+      <path d="M108,60 Q113,52 118,60" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.5" fill="none" opacity="0.3" />
 
-      {/* Eyes */}
+      {/* Eyes - bigger, more expressive */}
       <CatEyes isStartled={isStartled} isJudgmental={isJudgmental} isPurring={isPurring} />
 
-      {/* Nose */}
-      <path d="M110,88 L107,92 L113,92 Z" fill="hsl(var(--cat-nose))" />
-      <circle cx="109" cy="89" r="1" fill="hsl(var(--cat-nose))" opacity="0.4" />
+      {/* Nose - heart-shaped */}
+      <path d="M107,88 Q110,84 113,88 Q113,92 110,94 Q107,92 107,88 Z" fill="hsl(var(--cat-nose))" />
+      <circle cx="109" cy="87" r="1.2" fill="hsl(0 0% 100%)" opacity="0.35" />
 
       {/* Mouth */}
       {isPurring ? (
         <>
-          <path d="M104,94 Q110,99 116,94" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-          <path d="M140,82 L148,80" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.6" opacity="0.3" className="animate-float" />
-          <path d="M140,86 L148,86" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.6" opacity="0.3" className="animate-float" style={{ animationDelay: "0.3s" }} />
+          <path d="M104,95 Q110,101 116,95" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          {/* Purr lines */}
+          <path d="M142,82 L150,80" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" opacity="0.3" className="animate-float" />
+          <path d="M142,87 L150,87" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" opacity="0.3" className="animate-float" style={{ animationDelay: "0.3s" }} />
+          <path d="M142,92 L149,93" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" opacity="0.3" className="animate-float" style={{ animationDelay: "0.6s" }} />
         </>
       ) : isStartled ? (
-        <ellipse cx="110" cy="96" rx="3" ry="4" fill="hsl(var(--cat-ginger-dark))" opacity="0.6" />
+        <ellipse cx="110" cy="97" rx="4" ry="5" fill="hsl(var(--cat-ginger-dark))" opacity="0.5" />
       ) : (
         <>
-          <path d="M107,93 Q104,96 101,95" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1" fill="none" strokeLinecap="round" />
-          <path d="M113,93 Q116,96 119,95" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1" fill="none" strokeLinecap="round" />
+          <path d="M107,95 Q103,98 100,97" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+          <path d="M113,95 Q117,98 120,97" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.2" fill="none" strokeLinecap="round" />
         </>
       )}
 
-      {/* Whiskers */}
-      <g opacity="0.45">
-        <line x1="70" y1="85" x2="92" y2="88" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.7" />
-        <line x1="68" y1="90" x2="92" y2="91" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.7" />
-        <line x1="72" y1="96" x2="92" y2="94" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.7" />
-        <line x1="128" y1="88" x2="150" y2="85" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.7" />
-        <line x1="128" y1="91" x2="152" y2="90" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.7" />
-        <line x1="128" y1="94" x2="148" y2="96" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.7" />
+      {/* Whiskers - longer, more graceful */}
+      <g opacity="0.4" className="animate-whisker">
+        <line x1="65" y1="84" x2="90" y2="88" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" />
+        <line x1="63" y1="90" x2="90" y2="92" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" />
+        <line x1="67" y1="96" x2="90" y2="95" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" />
+        <line x1="130" y1="88" x2="155" y2="84" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" />
+        <line x1="130" y1="92" x2="157" y2="90" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" />
+        <line x1="130" y1="95" x2="153" y2="96" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="0.8" />
       </g>
 
-      {/* Blush when purring */}
+      {/* Blush when purring - softer pink circles */}
       {isPurring && (
         <>
-          <circle cx="88" cy="90" r="5" fill="hsl(var(--cat-nose))" opacity="0.12" />
-          <circle cx="132" cy="90" r="5" fill="hsl(var(--cat-nose))" opacity="0.12" />
+          <circle cx="85" cy="92" r="7" fill="hsl(var(--cat-nose))" opacity="0.1" />
+          <circle cx="135" cy="92" r="7" fill="hsl(var(--cat-nose))" opacity="0.1" />
+          {/* Little hearts */}
+          <text x="148" y="68" fontSize="12" opacity="0.3" className="animate-float" style={{ animationDelay: "0.5s" }}>💕</text>
         </>
       )}
+
+      {/* Chest fluff detail */}
+      <path d="M100,115 Q105,108 110,115 Q115,108 120,115" stroke="hsl(var(--cat-ginger-light))" strokeWidth="1.5" fill="none" opacity="0.3" />
 
       {/* Reaching paw */}
       {isReaching && (
         <g className="animate-reach-paw">
-          <ellipse cx="130" cy="120" rx="8" ry="6" fill="hsl(var(--cat-ginger))"
+          <ellipse cx="130" cy="120" rx="9" ry="7" fill="hsl(var(--cat-ginger))"
             style={{ transform: "rotate(-30deg)", transformOrigin: "130px 120px" }}
           />
+          <circle cx="127" cy="122" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.15" />
+          <circle cx="131" cy="123" r="1.5" fill="hsl(var(--cat-nose))" opacity="0.15" />
         </g>
       )}
     </>
@@ -247,17 +316,20 @@ function CatEyes({ isStartled, isJudgmental, isPurring }: { isStartled: boolean;
     return (
       <>
         <g>
-          <ellipse cx="97" cy="78" rx="7" ry="3.5" fill="hsl(var(--cat-ginger-dark))" />
-          <ellipse cx="97" cy="79" rx="4" ry="2.5" fill="hsl(45 80% 45%)" />
-          <ellipse cx="97" cy="79" rx="2" ry="2" fill="hsl(var(--cat-ginger-dark))" opacity="0.8" />
+          <ellipse cx="95" cy="78" rx="9" ry="4" fill="hsl(0 0% 15%)" />
+          <ellipse cx="95" cy="79" rx="5" ry="3" fill="hsl(45 80% 50%)" />
+          <ellipse cx="95" cy="79" rx="2" ry="2.5" fill="hsl(0 0% 10%)" />
+          <circle cx="93" cy="77" r="1.2" fill="hsl(0 0% 100%)" opacity="0.5" />
         </g>
         <g>
-          <ellipse cx="123" cy="78" rx="7" ry="3.5" fill="hsl(var(--cat-ginger-dark))" />
-          <ellipse cx="123" cy="79" rx="4" ry="2.5" fill="hsl(45 80% 45%)" />
-          <ellipse cx="123" cy="79" rx="2" ry="2" fill="hsl(var(--cat-ginger-dark))" opacity="0.8" />
+          <ellipse cx="125" cy="78" rx="9" ry="4" fill="hsl(0 0% 15%)" />
+          <ellipse cx="125" cy="79" rx="5" ry="3" fill="hsl(45 80% 50%)" />
+          <ellipse cx="125" cy="79" rx="2" ry="2.5" fill="hsl(0 0% 10%)" />
+          <circle cx="123" cy="77" r="1.2" fill="hsl(0 0% 100%)" opacity="0.5" />
         </g>
-        <path d="M90,76 Q97,73 104,76" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.5" fill="none" />
-        <path d="M116,76 Q123,73 130,76" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="1.5" fill="none" />
+        {/* Heavy eyelids */}
+        <path d="M86,75 Q95,71 104,75" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="2" fill="none" />
+        <path d="M116,75 Q125,71 134,75" stroke="hsl(var(--cat-ginger-dark))" strokeWidth="2" fill="none" />
       </>
     );
   }
@@ -266,18 +338,18 @@ function CatEyes({ isStartled, isJudgmental, isPurring }: { isStartled: boolean;
     return (
       <>
         <g>
-          <circle cx="97" cy="77" r="9" fill="hsl(0 0% 95%)" />
-          <circle cx="97" cy="77" r="7" fill="hsl(45 80% 50%)" />
-          <circle cx="97" cy="77" r="4" fill="hsl(var(--cat-ginger-dark))" />
-          <circle cx="95" cy="74" r="2" fill="hsl(0 0% 100%)" />
-          <circle cx="99" cy="79" r="1" fill="hsl(0 0% 100%)" opacity="0.6" />
+          <circle cx="95" cy="77" r="11" fill="hsl(0 0% 95%)" />
+          <circle cx="95" cy="77" r="9" fill="hsl(45 85% 52%)" />
+          <circle cx="95" cy="77" r="5" fill="hsl(0 0% 8%)" />
+          <circle cx="93" cy="74" r="2.5" fill="hsl(0 0% 100%)" />
+          <circle cx="98" cy="79" r="1.2" fill="hsl(0 0% 100%)" opacity="0.5" />
         </g>
         <g>
-          <circle cx="123" cy="77" r="9" fill="hsl(0 0% 95%)" />
-          <circle cx="123" cy="77" r="7" fill="hsl(45 80% 50%)" />
-          <circle cx="123" cy="77" r="4" fill="hsl(var(--cat-ginger-dark))" />
-          <circle cx="121" cy="74" r="2" fill="hsl(0 0% 100%)" />
-          <circle cx="125" cy="79" r="1" fill="hsl(0 0% 100%)" opacity="0.6" />
+          <circle cx="125" cy="77" r="11" fill="hsl(0 0% 95%)" />
+          <circle cx="125" cy="77" r="9" fill="hsl(45 85% 52%)" />
+          <circle cx="125" cy="77" r="5" fill="hsl(0 0% 8%)" />
+          <circle cx="123" cy="74" r="2.5" fill="hsl(0 0% 100%)" />
+          <circle cx="128" cy="79" r="1.2" fill="hsl(0 0% 100%)" opacity="0.5" />
         </g>
       </>
     );
@@ -285,21 +357,25 @@ function CatEyes({ isStartled, isJudgmental, isPurring }: { isStartled: boolean;
 
   return (
     <>
-      <g className="animate-blink" style={{ transformOrigin: "97px 77px" }}>
-        <ellipse cx="97" cy="77" rx="8" ry="7.5" fill="hsl(0 0% 92%)" />
-        <circle cx="97" cy="77" r="5.5" fill="hsl(45 80% 50%)" />
-        <circle cx="97" cy="77" r="4" fill="hsl(45 70% 42%)" opacity="0.5" />
-        <ellipse cx="97" cy="77" rx={isPurring ? 2 : 2.5} ry={isPurring ? 3.5 : 4} fill="hsl(var(--cat-ginger-dark))" />
-        <circle cx="95" cy="74" r="1.8" fill="hsl(0 0% 100%)" />
-        <circle cx="99" cy="79" r="0.8" fill="hsl(0 0% 100%)" opacity="0.5" />
+      {/* Left eye */}
+      <g className="animate-blink" style={{ transformOrigin: "95px 77px" }}>
+        <ellipse cx="95" cy="77" rx="10" ry="9" fill="hsl(0 0% 95%)" />
+        <circle cx="95" cy="77" r="7" fill="hsl(45 85% 52%)" />
+        <circle cx="95" cy="77" r="5" fill="hsl(45 75% 44%)" opacity="0.5" />
+        <ellipse cx="95" cy="77" rx={isPurring ? 2.5 : 3} ry={isPurring ? 4 : 4.5} fill="hsl(0 0% 8%)" />
+        {/* Catchlight */}
+        <circle cx="92" cy="74" r="2.2" fill="hsl(0 0% 100%)" />
+        <circle cx="97" cy="79" r="1" fill="hsl(0 0% 100%)" opacity="0.45" />
       </g>
-      <g className="animate-blink" style={{ transformOrigin: "123px 77px", animationDelay: "0.1s" }}>
-        <ellipse cx="123" cy="77" rx="8" ry="7.5" fill="hsl(0 0% 92%)" />
-        <circle cx="123" cy="77" r="5.5" fill="hsl(45 80% 50%)" />
-        <circle cx="123" cy="77" r="4" fill="hsl(45 70% 42%)" opacity="0.5" />
-        <ellipse cx="123" cy="77" rx={isPurring ? 2 : 2.5} ry={isPurring ? 3.5 : 4} fill="hsl(var(--cat-ginger-dark))" />
-        <circle cx="121" cy="74" r="1.8" fill="hsl(0 0% 100%)" />
-        <circle cx="125" cy="79" r="0.8" fill="hsl(0 0% 100%)" opacity="0.5" />
+      {/* Right eye */}
+      <g className="animate-blink" style={{ transformOrigin: "125px 77px", animationDelay: "0.1s" }}>
+        <ellipse cx="125" cy="77" rx="10" ry="9" fill="hsl(0 0% 95%)" />
+        <circle cx="125" cy="77" r="7" fill="hsl(45 85% 52%)" />
+        <circle cx="125" cy="77" r="5" fill="hsl(45 75% 44%)" opacity="0.5" />
+        <ellipse cx="125" cy="77" rx={isPurring ? 2.5 : 3} ry={isPurring ? 4 : 4.5} fill="hsl(0 0% 8%)" />
+        {/* Catchlight */}
+        <circle cx="122" cy="74" r="2.2" fill="hsl(0 0% 100%)" />
+        <circle cx="127" cy="79" r="1" fill="hsl(0 0% 100%)" opacity="0.45" />
       </g>
     </>
   );
