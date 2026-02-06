@@ -1,91 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 30 10% 6%;
-    --foreground: 35 20% 92%;
+    --background: 25 15% 7%;
+    --foreground: 35 30% 88%;
 
-    --card: 30 8% 10%;
-    --card-foreground: 35 20% 92%;
+    --card: 25 12% 11%;
+    --card-foreground: 35 30% 88%;
 
-    --popover: 30 8% 10%;
-    --popover-foreground: 35 20% 92%;
+    --popover: 25 12% 14%;
+    --popover-foreground: 35 30% 88%;
 
-    --primary: 35 85% 55%;
-    --primary-foreground: 30 10% 6%;
+    --primary: 35 80% 55%;
+    --primary-foreground: 25 15% 7%;
 
-    --secondary: 30 8% 15%;
-    --secondary-foreground: 35 20% 92%;
+    --secondary: 280 30% 40%;
+    --secondary-foreground: 280 30% 90%;
 
-    --muted: 30 6% 18%;
-    --muted-foreground: 35 10% 55%;
+    --muted: 25 8% 18%;
+    --muted-foreground: 35 15% 55%;
 
-    --accent: 35 75% 45%;
-    --accent-foreground: 35 20% 92%;
+    --accent: 330 50% 45%;
+    --accent-foreground: 330 50% 90%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 35 20% 92%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
 
-    --border: 30 8% 18%;
-    --input: 30 8% 18%;
-    --ring: 35 85% 55%;
+    --border: 25 10% 18%;
+    --input: 25 10% 18%;
+    --ring: 35 80% 55%;
 
-    --radius: 0.25rem;
+    --radius: 1rem;
 
-    --font-heading: 'Cormorant Garamond', serif;
-    --font-body: 'Inter', sans-serif;
+    --sidebar-background: 25 12% 11%;
+    --sidebar-foreground: 35 30% 88%;
+    --sidebar-primary: 35 80% 55%;
+    --sidebar-primary-foreground: 25 15% 7%;
+    --sidebar-accent: 280 30% 40%;
+    --sidebar-accent-foreground: 280 30% 90%;
+    --sidebar-border: 25 10% 18%;
+    --sidebar-ring: 35 80% 55%;
 
-    --sidebar-background: 30 8% 8%;
-    --sidebar-foreground: 35 20% 92%;
-    --sidebar-primary: 35 85% 55%;
-    --sidebar-primary-foreground: 30 10% 6%;
-    --sidebar-accent: 30 8% 15%;
-    --sidebar-accent-foreground: 35 20% 92%;
-    --sidebar-border: 30 8% 18%;
-    --sidebar-ring: 35 85% 55%;
-  }
+    --chart-1: 35 80% 55%;
+    --chart-2: 280 30% 50%;
+    --chart-3: 330 50% 55%;
+    --chart-4: 200 40% 50%;
+    --chart-5: 160 30% 45%;
 
-  .dark {
-    --background: 30 10% 6%;
-    --foreground: 35 20% 92%;
+    --font-sans: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
+    --font-handwritten: 'Caveat', cursive;
 
-    --card: 30 8% 10%;
-    --card-foreground: 35 20% 92%;
-
-    --popover: 30 8% 10%;
-    --popover-foreground: 35 20% 92%;
-
-    --primary: 35 85% 55%;
-    --primary-foreground: 30 10% 6%;
-
-    --secondary: 30 8% 15%;
-    --secondary-foreground: 35 20% 92%;
-
-    --muted: 30 6% 18%;
-    --muted-foreground: 35 10% 55%;
-
-    --accent: 35 75% 45%;
-    --accent-foreground: 35 20% 92%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 35 20% 92%;
-
-    --border: 30 8% 18%;
-    --input: 30 8% 18%;
-    --ring: 35 85% 55%;
-
-    --sidebar-background: 30 8% 8%;
-    --sidebar-foreground: 35 20% 92%;
-    --sidebar-primary: 35 85% 55%;
-    --sidebar-primary-foreground: 30 10% 6%;
-    --sidebar-accent: 30 8% 15%;
-    --sidebar-accent-foreground: 35 20% 92%;
-    --sidebar-border: 30 8% 18%;
-    --sidebar-ring: 35 85% 55%;
+    /* Custom tokens for Pocket Cat */
+    --cat-ginger: 25 80% 55%;
+    --cat-ginger-light: 30 75% 65%;
+    --cat-ginger-dark: 20 70% 40%;
+    --cat-nose: 350 60% 60%;
+    --glow-warm: 35 80% 55%;
+    --glow-soft: 280 30% 50%;
+    --night-deep: 240 20% 4%;
+    --stars: 45 70% 80%;
   }
 }
 
@@ -95,56 +72,235 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
-    font-feature-settings: 'kern' 1, 'liga' 1;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    @apply font-light tracking-wide;
+    @apply bg-background text-foreground font-sans;
+    overflow: hidden;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Cat breathing animation */
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
   }
 
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+  /* Cat tail swish */
+  .animate-tail {
+    animation: tailSwish 3s ease-in-out infinite;
+    transform-origin: left center;
+  }
+
+  /* Purring vibration */
+  .animate-purr {
+    animation: purr 0.15s ease-in-out infinite;
+  }
+
+  /* Gentle float */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Soft fade in */
+  .animate-soft-fade-in {
+    animation: softFadeIn 2s ease-out forwards;
+  }
+
+  /* Delayed fade in */
+  .animate-delayed-fade {
     opacity: 0;
+    animation: softFadeIn 2s ease-out forwards;
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Card flip */
+  .animate-card-flip {
+    animation: cardFlip 0.6s ease-in-out forwards;
   }
 
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-
-  .hover-lift {
-    @apply transition-all duration-500 ease-out;
+  /* Gentle bob */
+  .animate-bob {
+    animation: bob 3s ease-in-out infinite;
   }
 
-  .hover-lift:hover {
-    transform: translateY(-8px);
-    @apply shadow-xl;
+  /* Sparkle */
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
   }
 
-  .image-zoom {
-    @apply transition-transform duration-700 ease-out;
+  /* Ear twitch */
+  .animate-ear-twitch {
+    animation: earTwitch 4s ease-in-out infinite;
   }
 
-  .image-zoom:hover {
-    transform: scale(1.05);
+  /* Eye blink */
+  .animate-blink {
+    animation: blink 5s ease-in-out infinite;
   }
+
+  /* Slide up */
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  /* Paw knead */
+  .animate-knead {
+    animation: knead 1.5s ease-in-out infinite;
+  }
+
+  /* Startled jump */
+  .animate-startled {
+    animation: startled 0.5s ease-out;
+  }
+
+  /* Wiggle (toy play) */
+  .animate-wiggle {
+    animation: wiggle 0.6s ease-in-out;
+  }
+
+  /* Reach up (feather) */
+  .animate-reach {
+    animation: reach 1.5s ease-in-out infinite;
+  }
+
+  /* Reach paw */
+  .animate-reach-paw {
+    animation: reachPaw 1.5s ease-in-out infinite;
+  }
+
+  /* Yarn ball bounce */
+  .animate-yarn-bounce {
+    animation: yarnBounce 2s ease-in-out infinite;
+  }
+
+  /* Feather dangle */
+  .animate-feather-dangle {
+    animation: featherDangle 2.5s ease-in-out infinite;
+  }
+
+  /* Head tilt */
+  .animate-head-tilt {
+    animation: headTilt 3s ease-in-out;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.03) scaleX(1.01); }
+}
+
+@keyframes tailSwish {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes purr {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(0.5px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes softFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardFlip {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-4px) rotate(1deg); }
+  66% { transform: translateY(2px) rotate(-1deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes earTwitch {
+  0%, 90%, 100% { transform: rotate(0deg); }
+  93% { transform: rotate(-8deg); }
+  96% { transform: rotate(3deg); }
+}
+
+@keyframes blink {
+  0%, 42%, 46%, 100% { transform: scaleY(1); }
+  44% { transform: scaleY(0.1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes knead {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  75% { transform: translateY(-3px); }
+}
+
+@keyframes startled {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-20px) scale(1.1); }
+  60% { transform: translateY(-5px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  15% { transform: translateX(-3px) rotate(-2deg); }
+  30% { transform: translateX(3px) rotate(2deg); }
+  45% { transform: translateX(-2px) rotate(-1deg); }
+  60% { transform: translateX(2px) rotate(1deg); }
+  75% { transform: translateX(-1px) rotate(0deg); }
+}
+
+@keyframes reach {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-8px) rotate(-3deg); }
+  60% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes reachPaw {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -20px) rotate(-30deg); }
+}
+
+@keyframes yarnBounce {
+  0% { transform: translateX(-60px) translateY(0); }
+  20% { transform: translateX(-30px) translateY(-30px); }
+  40% { transform: translateX(0px) translateY(0); }
+  60% { transform: translateX(30px) translateY(-20px); }
+  80% { transform: translateX(60px) translateY(0); }
+  100% { transform: translateX(30px) translateY(-10px); }
+}
+
+@keyframes featherDangle {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  25% { transform: rotate(8deg) translateY(-3px); }
+  50% { transform: rotate(-3deg) translateY(2px); }
+  75% { transform: rotate(6deg) translateY(-2px); }
+}
+
+@keyframes headTilt {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(12deg); }
+  60% { transform: rotate(8deg); }
 }
